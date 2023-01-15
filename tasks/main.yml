@@ -1,0 +1,24 @@
+---
+# tasks file for ansible-role-frp
+- name: download frp
+  ansible.builtin.get_url:
+    url: '{{ frp_download_url }}'
+    dest: /tmp
+
+- name: unarchive frp
+  ansible.builtin.unarchive:
+    src: '/tmp/{{ frp_install_file_tar }}'
+    dest: '/tmp'
+    remote_src: yes
+
+- name: copy to path
+  ansible.builtin.copy:
+    src: '/tmp/frp_{{ frp_version }}_linux_amd64/{{ item }}'
+    dest: '{{ frp_install_dir }}/'
+    remote_src: yes
+    owner: 'root'
+    group: 'root'
+    mode: '0755'
+  loop:
+    - frpc
+    - frps

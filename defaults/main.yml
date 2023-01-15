@@ -1,0 +1,13 @@
+---
+# defaults file for ansible-role-frp
+# @var frp_version:description: frp version
+frp_version: 0.46.1
+
+# @var frp_download_url:description: frp download url
+frp_download_url: 'https://github.com/fatedier/frp/releases/download/v{{ frp_version }}/frp_{{ frp_version }}_linux_amd64.tar.gz'
+
+# @var frp_install_file_tar:description: frp install filename
+frp_install_file_tar: 'frp_{{ frp_version }}_linux_amd64.tar.gz'
+
+# @var frp_install_dir:description: frp install directory
+frp_install_dir: '/usr/local/bin'
